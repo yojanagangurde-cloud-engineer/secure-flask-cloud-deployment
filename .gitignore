@@ -1,0 +1,60 @@
+# Python cache files
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+
+venv/
+env/
+ENV/
+
+# Environment variables
+
+.env
+
+# Flask instance folder
+
+instance/
+
+# Distribution / packaging
+
+build/
+dist/
+*.egg-info/
+
+# Logs
+
+*.log
+
+# MacOS system files
+
+.DS_Store
+
+# VS Code
+
+.vscode/
+
+# JetBrains IDEs
+
+.idea/
+
+# Docker
+
+*.db
+*.sqlite3
+
+# Python test cache
+
+.pytest_cache/
+
+# Coverage reports
+
+.coverage
+htmlcov/
+
+# Temporary files
+
+*.tmp
+*.swp

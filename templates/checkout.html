@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Checkout - Yojana's Fashion Hub</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+<h2 class="mb-4">Checkout</h2>
+
+<!-- Cart Summary -->
+<div class="mb-4">
+    <h4>Order Summary</h4>
+    {% if cart %}
+    {% for item in cart %}
+    <div class="d-flex align-items-center mb-2 border-bottom pb-2">
+        <img src="{{ url_for('static', filename='images/' + item.image) }}"
+            alt="{{ item.name }}"
+            class="img-fluid"
+            style="width:100px; height:auto; margin-right:10px;">
+        <div>
+            <h6 class="mb-1" style="font-size:0.9rem;">{{ item.name }}</h6>
+            <p class="mb-0" style="font-size:0.85rem;">{{ item.price }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <h5 class="mt-3">Total: ${{ total }}</h5>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+
+<!-- Checkout Form -->
+<div>
+    <h4>Shipping Information</h4>
+    <form method="POST" action="{{ url_for('place_order') }}">
+    <div class="form-group">
+        <label for="name" style="font-size:0.9rem;">Full Name</label>
+        <input type="text" class="form-control form-control-sm" id="name" name="name" placeholder="Enter your full name" required>
+    </div>
+    <div class="form-group">
+        <label for="address" style="font-size:0.9rem;">Address</label>
+        <textarea class="form-control form-control-sm" id="address" name="address" rows="2" placeholder="Enter your shipping address" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="payment" style="font-size:0.9rem;">Payment Info</label>
+        <input type="text" class="form-control form-control-sm" id="payment" name="payment" placeholder="Card Number / PayPal Email" required>
+    </div>
+    <button type="submit" class="btn btn-success btn-block btn-sm">Place Order</button>
+    </form>
+</div>
+</div>
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+</body>
+</html>
